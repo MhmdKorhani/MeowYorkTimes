@@ -1,2 +1,10 @@
 @import "bootstrap/scss/bootstrap.scss";
 @import "./assets/styles/custom-theme.scss";
+
+.logo-container {
+    height: 40vh;
+
+    .logo {
+        width: 8rem;
+    }
+}

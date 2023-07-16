@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$MeowYorkTimes-primary: mat.define-palette(mat.$teal-palette);
+$MeowYorkTimes-accent: mat.define-palette(mat.$cyan-palette);
+$MeowYorkTimes-warn: mat.define-palette(mat.$red-palette);
+$MeowYorkTimes-typography: mat.define-typography-config($font-family: 'Comfortaa');
+
+$MeowYorkTimes-theme: mat.define-light-theme((color: (primary: $MeowYorkTimes-primary,
+                accent: $MeowYorkTimes-accent,
+                warn: $MeowYorkTimes-warn,
+            ),
+            typography: $MeowYorkTimes-typography));
+
+@include mat.all-component-themes($MeowYorkTimes-theme);

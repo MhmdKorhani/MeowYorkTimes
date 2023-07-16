@@ -7,22 +7,35 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 1. NodeJs version 16 or above
 2. [Fake auth Server](https://github.com/techiediaries/fake-api-jwt-json-server)
 
+## Run MeowYorkTimes
+
+1. Clone the fake auth server: `git clone https://github.com/techiediaries/fake-api-jwt-json-server.git`.
+2. Navigate to auth server directory and run `npm install`.
+3. Run the auth server: `npm run start-auth`.
+4. Clone the angular project: `git clone https://github.com/MhmdKorhani/MeowYorkTimes.git`.
+5. Run `npm install` to install required npm packages.
+6. Run `ng serve --open` to run the dev server and make angular cli open your default browser and navigate to `http://localhost:4200/`.
+
 ## 3rd Party Libraries
 
 **CSS Frameworks**
-1. [Bootstrap](https://getbootstrap.com) 5.3.0
-2. [Angular Material](https://material.angular.io) 16.1.5
 
-## Run MeowYorkTimes
+1. [Bootstrap](https://getbootstrap.com) @5.3.0
+2. [Angular Material](https://material.angular.io) @16.1.5
+3. [Swiper](https://swiperjs.com/) @8.4.7
 
-1. Clone and run Fake auth server.
-2. Clone the angular project. `git clone https://github.com/MhmdKorhani/MeowYorkTimes`.git).
-3. Run `npm install` to install required npm packages.
-4. Run `ng serve --open` to run the dev server and make angular cli open your default browser and navigate to `http://localhost:4200/`.
+**Date Formatting**
+
+1. [Moment.js](https://momentjs.com/) @2.29.4
+
+## 3rd Party APIs
+
+1. [DummyJSON](https://dummyjson.com) - Comments API. This was used because New York Time's Comments API is deprecated.
+2. [UI Avatars](https://ui-avatars.com) - Initials Avatar Generator
 
 ## ESlint
 
-Run default Angular ESlint tests `ng lint` or `npm run lint`.
+Run Angular ESlint tests `ng lint` or `npm run lint`.
 
 ## Running unit tests
 

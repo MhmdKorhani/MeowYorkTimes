@@ -1,0 +1,13 @@
+.home {
+    height: 80vh;
+}
+
+.card {
+    &:hover {
+        cursor: pointer;
+        background: black;
+        color: white;
+    }
+
+    height: 20vh;
+}

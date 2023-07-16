@@ -1,0 +1,15 @@
+.badge {
+    font-size: small;
+    background-color: rgb(0, 0, 0);
+    border-radius: .3rem;
+    padding: .3rem;
+    margin: .2rem;
+
+    &:first-child {
+        margin-left: 0 !important;
+    }
+
+    &:last-child {
+        margin-right: 0 !important;
+    }
+}

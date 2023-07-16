@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@core/auth';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MeowYorkTimes';
+
+  constructor(private auth: AuthService) {
+
+  }
+
+  signOut() {
+    this.auth.signOut();
+  }
 }
