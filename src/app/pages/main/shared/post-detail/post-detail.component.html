@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex justify-content-center" *ngIf="loading">
                 <mat-spinner></mat-spinner>
@@ -8,18 +8,23 @@
 
         <div class="row g-3" *ngIf="!loading">
             <div class="col-12 display-6 text-center">
-                {{story.title}}
+                {{title}}
             </div>
             <div class="col-12">
-                <div *ngIf="story.des_facet.length > 0" class="d-flex flex-wrap">
-                    <span *ngFor="let facet of story.des_facet" class="badge">{{facet}}</span>
+                <div *ngIf="facets.length > 0" class="d-flex flex-wrap">
+                    <span *ngFor="let facet of facets" class="badge">{{facet}}</span>
                 </div>
-                <div><strong>{{story.byline}}</strong></div>
-                <div><small>{{date.getReadableDate(story.published_date)}}</small></div>
+                <div><strong>{{byline}}</strong></div>
+                <div><small>{{date.getReadableDate(publishDate)}}</small></div>
+            </div>
+
+
+            <div class="col-12" *ngIf="multimedia">
+                <img [src]="multimedia" class="w-100" [alt]="title">
             </div>
 
             <div class="col-12">
-                {{story.abstract}}
+                {{abstract}}
             </div>
 
             <div class="col-12">

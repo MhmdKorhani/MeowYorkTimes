@@ -5,9 +5,9 @@ import { StoriesRoutingModule } from './stories-routing.module';
 import { StoriesComponent } from './stories.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
-import { StoryComponent } from '../shared/story/story.component';
 import { DefaultMaterialModule } from '@core/modules/default-material.module';
 import { PostComponent } from '../shared/post/post.component';
+import { PostDetailComponent } from '../shared/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { PostComponent } from '../shared/post/post.component';
     MatButtonToggleModule,
     MatDialogModule,
     PostComponent,
-    StoryComponent
+    PostDetailComponent
   ]
 })
 export class StoriesModule { }

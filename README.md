@@ -18,14 +18,11 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 
 ## 3rd Party Libraries
 
-**CSS Frameworks**
+**CSS Frameworks and Libraries**
 
 1. [Bootstrap](https://getbootstrap.com) @5.3.0
 2. [Angular Material](https://material.angular.io) @16.1.5
-
-**Date Formatting**
-
-1. [Moment.js](https://momentjs.com/) @2.29.4
+3. [Moment.js](https://momentjs.com/) @2.29.4
 
 ## 3rd Party APIs
 

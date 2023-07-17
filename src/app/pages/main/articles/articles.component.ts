@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { ApiService } from '@core/providers/api.service';
 import { saveHistory, selectHistory } from '@core/state/history';
@@ -10,6 +11,7 @@ import { Multimedia } from '@shared/models';
 import { ArticleResponse } from '@shared/models/response/article-response.model';
 import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { PostDetailComponent } from '../shared/post-detail/post-detail.component';
 
 @Component({
   selector: 'app-articles',
@@ -30,9 +32,8 @@ export class ArticlesComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private api: ApiService) {
-
-  }
+    private api: ApiService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getHistories();
@@ -117,5 +118,12 @@ export class ArticlesComponent implements OnInit {
 
     this.response = data;
     this.loading = false;
+  }
+
+  async seeDetails(index: number) {
+    this.dialog.open(PostDetailComponent, {
+      data: { type: 'article', value: this.response.response.docs.at(index) },
+      panelClass: 'fullscreen-dialog',
+    });
   }
 }

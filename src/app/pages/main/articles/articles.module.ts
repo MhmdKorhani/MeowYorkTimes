@@ -11,6 +11,7 @@ import { HistoryEffects } from '@core/state/history/history.effects';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PostComponent } from '../shared/post/post.component';
 import { DefaultMaterialModule } from '@core/modules/default-material.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [ArticlesComponent],
@@ -23,7 +24,8 @@ import { DefaultMaterialModule } from '@core/modules/default-material.module';
     EffectsModule.forFeature([HistoryEffects]),
     MatPaginatorModule,
     PostComponent,
-    DefaultMaterialModule
+    DefaultMaterialModule,
+    MatDialogModule
   ]
 })
 export class ArticlesModule { }

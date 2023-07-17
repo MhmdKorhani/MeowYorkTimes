@@ -7,6 +7,7 @@ export interface Article {
     headline: { main: string };
     keywords: { name: string, value: string }[];
     lead_paragraph: string;
+    news_desk: string;
     multimedia: Multimedia[];
-    pub_date: string;
+    pub_date: Date;
 }

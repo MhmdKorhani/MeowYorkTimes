@@ -28,7 +28,8 @@
     <div class="row g-3" *ngIf="response && !loading">
         <ng-container *ngIf="response.response.docs.length > 0 else noResults">
             <div class="col-12 col-md-6 col-lg-4" *ngFor="let doc of response.response.docs; let i = index">
-                <app-post [title]="doc.headline.main" [img]="doc.multimedia[0].url" [index]="i"></app-post>
+                <app-post [title]="doc.headline.main" [img]="doc.multimedia[0].url" [index]="i"
+                    (postClicked)="seeDetails($event)"></app-post>
             </div>
 
             <div class="col-12">

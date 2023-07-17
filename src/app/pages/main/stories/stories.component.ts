@@ -7,9 +7,9 @@ import { StoryResponse } from '@shared/models/response/story.response.model';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { StoryComponent } from '../shared/story/story.component';
 import { Story } from '@shared/models/story.model';
 import { Endpoints } from '@shared/enums';
+import { PostDetailComponent } from '../shared/post-detail/post-detail.component';
 
 @Component({
   selector: 'app-stories',
@@ -60,8 +60,8 @@ export class StoriesComponent {
    * @returns None
    */
   async seeDetails(index: number) {
-    this.dialog.open(StoryComponent, {
-      data: this.stories.at(index),
+    this.dialog.open(PostDetailComponent, {
+      data: { type: 'story', value: this.stories.at(index) },
       panelClass: 'fullscreen-dialog',
     });
   }
