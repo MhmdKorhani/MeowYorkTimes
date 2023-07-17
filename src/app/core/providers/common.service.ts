@@ -8,7 +8,6 @@ export class CommonService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-
   /**
    * Presents an error message inside a snackbar to the user, if provided.
    * @param {string | undefined} error - The error message to display.
