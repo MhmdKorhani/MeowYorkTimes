@@ -36,8 +36,7 @@ Run Angular ESlint tests `ng lint` or `npm run lint`.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test --code-coverage` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. A summary of code coverage will appear on your terminal.
+2. navigate to `coverage/meow-york-times/` directory and open index.html file to see detailed code coverage tests.
