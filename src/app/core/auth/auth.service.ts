@@ -45,18 +45,22 @@ export class AuthService {
     return token?.access_token;
   }
 
+  /**
+   * Signs out the user by removing the access token from the session storage and updating the store.
+   * @returns None
+   */
   signOut() {
     sessionStorage.removeItem(StorageKey.token);
     this.store.dispatch(setAccessToken({ token: null }));
   }
 
   /**
-   * Dispatches the logged-in user's access token state and saves it to session storage if specified.
-   * @param {string | null} token - The access token of the logged-in user. Pass null to clear the token.
-   * @param {boolean} [saveSession=true] - Whether to save the token to session storage. Default is true.
+   * Sets the logged-in user's access token and optionally saves it to the session storage.
+   * @param {string | null} token - The access token of the logged-in user.
+   * @param {boolean} [saveSession=true] - Whether to save the token to the session storage.
    * @returns None
    */
-  setLoggedInUser(token: string | null, saveSession = true) {
+  private setLoggedInUser(token: string | null, saveSession = true) {
     if (token) {
       this.store.dispatch(setAccessToken({ token: token }));
       if (saveSession) {

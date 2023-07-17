@@ -43,7 +43,7 @@ export class StoryComponent implements OnInit {
   }
 
   async getComments() {
-    this.comments = (await firstValueFrom(this.api.get<CommentsResponse>(`${environment.dummyJSON.ApiURL}/${Endpoints.comments}`))).comments;
+    this.comments = (await firstValueFrom(this.api.get<CommentsResponse>(`${environment.dummyData.dummyJson}/${Endpoints.comments}`))).comments;
     this.loading = false;
   }
 }

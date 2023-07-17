@@ -22,14 +22,9 @@
     </div>
 
     <div class="row g-3" *ngIf="stories && !loading">
-        <div class="col-12 col-md-6 col-lg-4" *ngFor="let story of stories">
-            <div class="story w-100" tabindex="0"
-                [ngStyle]="{'background-image': 'url(' + story.multimedia[0].url + ')' }" (click)="seeDetails(story)"
-                (keydown)="seeDetails(story)">
-                <span class="story_title text-center">
-                    <span>{{story.title}}</span>
-                </span>
-            </div>
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let story of stories; let i = index">
+            <app-post [title]="story.title" [img]="story.multimedia[0].url" [index]="i"
+            (postClicked)="seeDetails($event)"></app-post>
         </div>
     </div>
 </div>

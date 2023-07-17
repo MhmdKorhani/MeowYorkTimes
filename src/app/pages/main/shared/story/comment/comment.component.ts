@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from '@shared/models/comment.model';
 import { environment } from 'src/environments/environment';
 
@@ -12,9 +12,12 @@ import { environment } from 'src/environments/environment';
     CommonModule
   ]
 })
-export class CommentComponent {
+export class CommentComponent implements OnInit {
 
   @Input() comment!: Comment;
-  env = environment;
+  avatar!: string;
 
+  ngOnInit(): void {
+    this.avatar = `${environment.dummyData.avatar}/?name=${this.comment.user.username}&background=333&color=fff`;
+  }
 }

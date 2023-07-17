@@ -5,13 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StoreModule } from '@ngrx/store';
 
 //Components
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { tokenReducer } from './core/state/token/token.reducer';
-import { EffectsModule } from '@ngrx/effects';
+
+
+//Providers
 import { ApiInterceptor } from '@core/interceptors/api.interceptor';
+
+//State
+import { EffectsModule } from '@ngrx/effects';
+import { tokenReducer } from '@core/state/token';
 
 @NgModule({
   declarations: [

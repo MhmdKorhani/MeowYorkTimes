@@ -18,4 +18,32 @@
             </mat-form-field>
         </div>
     </div>
+
+    <div class="row" *ngIf="loading">
+        <div class="col-12 d-flex justify-content-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </div>
+
+    <div class="row g-3" *ngIf="response && !loading">
+        <ng-container *ngIf="response.response.docs.length > 0 else noResults">
+            <div class="col-12 col-md-6 col-lg-4" *ngFor="let doc of response.response.docs; let i = index">
+                <app-post [title]="doc.headline.main" [img]="doc.multimedia[0].url" [index]="i"></app-post>
+            </div>
+
+            <div class="col-12">
+                <mat-paginator #paginator class="demo-paginator"
+                    [length]="(response.response.meta.hits / 100).toFixed(0)" [pageSize]="10"
+                    [showFirstLastButtons]="true" [hidePageSize]="true" [pageIndex]="page" aria-label="Select page"
+                    (page)="handlePageEvent($event)">
+                </mat-paginator>
+            </div>
+        </ng-container>
+
+        <ng-template #noResults>
+            <div class="col-12 text-center">
+                <strong>No results found, please search for another topic</strong>
+            </div>
+        </ng-template>
+    </div>
 </div>

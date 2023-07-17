@@ -53,15 +53,16 @@ export class StoriesComponent {
     this.stories = results.results.filter(x => x.multimedia != null && x.multimedia[0].caption !== '');
   }
 
+
   /**
    * Opens a dialog to display the details of a story.
-   * @param {Story} story - The story object to display details for.
+   * @param {number} index - The index of the story to display.
    * @returns None
    */
-  async seeDetails(story: Story) {
+  async seeDetails(index: number) {
     this.dialog.open(StoryComponent, {
-      data: story,
-      minWidth: '70vw'
+      data: this.stories.at(index),
+      panelClass: 'fullscreen-dialog',
     });
   }
 }

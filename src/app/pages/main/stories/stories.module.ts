@@ -7,6 +7,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoryComponent } from '../shared/story/story.component';
 import { DefaultMaterialModule } from '@core/modules/default-material.module';
+import { PostComponent } from '../shared/post/post.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { DefaultMaterialModule } from '@core/modules/default-material.module';
     StoriesRoutingModule,
     MatButtonToggleModule,
     MatDialogModule,
+    PostComponent,
     StoryComponent
   ]
 })

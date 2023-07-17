@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { PageEvent } from '@angular/material/paginator';
 import { ApiService } from '@core/providers/api.service';
 import { saveHistory, selectHistory } from '@core/state/history';
 import { Store } from '@ngrx/store';
 import { Endpoints } from '@shared/enums';
-import { Observable } from 'rxjs';
+import { Multimedia } from '@shared/models';
+import { ArticleResponse } from '@shared/models/response/article-response.model';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,9 +19,14 @@ import { environment } from 'src/environments/environment';
 export class ArticlesComponent implements OnInit {
 
   @ViewChild(MatAutocompleteTrigger) autocomplete!: MatAutocompleteTrigger;
+  response!: ArticleResponse;
 
   searchControl = new FormControl<string>('');
   histories$!: Observable<string[]>;
+
+  loading = false;
+  searchString!: string;
+  page = 0;
 
   constructor(
     private store: Store,
@@ -65,19 +73,50 @@ export class ArticlesComponent implements OnInit {
    * @param {string} value - The value to set in the search input field.
    * @returns None
    */
-  private setValue(value: string) {
-    this.store.dispatch(saveHistory({ content: value }));
-    this.searchControl.reset();
+  private async setValue(value: string) {
+    this.searchControl.disable();
     this.autocomplete.closePanel();
-    this.search(this.searchControl.value as string);
+    this.store.dispatch(saveHistory({ content: value }));
+    this.searchString = value;
+    this.page = 0;
+    await this.search();
+    this.searchControl.reset();
+    this.searchControl.enable();
   }
 
-  search(val: string) {
+  /**
+   * Handles a page event by updating the current page index and triggering a search.
+   * @param {PageEvent} event - The page event object containing the page index and page size.
+   * @returns None
+   */
+  handlePageEvent(event: PageEvent) {
+    console.log(event.pageIndex);
+    this.page = event.pageIndex;
+    this.search();
+  }
+
+  /**
+   * Performs a search using the specified search string and page number.
+   * @returns None
+   */
+  async search() {
+    this.loading = true;
     const search: Map<string, string> = new Map<string, string>();
-    search.set('q', val);
-    search.set('page', '1');
-    this.api.get(`${environment.newYorkTimes.ApiURL}/${Endpoints.articles}`, search).subscribe((data) => {
-      console.log(data);
-    })
+    search.set('q', this.searchString);
+    search.set('page', this.page.toString());
+
+    const data = await firstValueFrom(this.api.get<ArticleResponse>(`${environment.newYorkTimes.ApiURL}/${Endpoints.articles}`, search));
+
+    data.response.docs.forEach(doc => {
+      if (doc.multimedia.length == 0) {
+        doc.multimedia = [{ url: `${environment.dummyData.lorempicsum}/seed/${this.searchString}/200/300` } as Multimedia];
+      }
+      else {
+        doc.multimedia.map(x => x.url = `https://nytimes.com/${x.url}`);
+      }
+    });
+
+    this.response = data;
+    this.loading = false;
   }
 }

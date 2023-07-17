@@ -1,71 +1,8 @@
-@mixin height_transition($time: .4s) {
-    -webkit-transition: max-height $time ease-out;
-    -moz-transition: max-height $time ease-out;
-    -ms-transition: max-height $time ease-out;
-    -o-transition: max-height $time ease-out;
-    transition: max-height $time ease-out;
-}
+@import "../../../../assets/styles/mixin";
 
 .centered-news {
     @include height_transition;
     height: 80vh;
     max-height: 80vh;
     overflow: hidden;
-}
-
-
-.story {
-    &:hover {
-        cursor: pointer;
-
-        .story_title {
-            max-height: 100%;
-            height: 100%;
-            background: rgb(0, 0, 0, 0.8);
-            @include height_transition(.2s);
-        }
-    }
-
-    width: 100%;
-    position: relative;
-    border-radius: 0.2rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-
-    .story_title {
-        padding: 0.5rem 1rem;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        display: grid;
-        gap: 0.5ch;
-        background: rgb(0, 0, 0, 0.6);
-        backdrop-filter: blur(1);
-        max-height: 35%;
-        height: auto;
-        align-content: center;
-        font-size: 1.2rem;
-        color: white;
-    }
-}
-
-@media screen and (min-width: 0px) {
-    .story {
-        height: 24rem;
-    }
-}
-
-@media screen and (min-width: 780px) {
-    .story {
-        height: 26rem;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .story {
-        height: 32rem;
-    }
 }

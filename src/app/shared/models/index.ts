@@ -1,3 +1,4 @@
+export * from './article.model';
 export * from './comment.model';
 export * from './multimedia.model';
 export * from './news-category.model';

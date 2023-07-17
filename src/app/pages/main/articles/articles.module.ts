@@ -8,6 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { historyReducer } from '@core/state/history';
 import { EffectsModule } from '@ngrx/effects';
 import { HistoryEffects } from '@core/state/history/history.effects';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { PostComponent } from '../shared/post/post.component';
+import { DefaultMaterialModule } from '@core/modules/default-material.module';
 
 @NgModule({
   declarations: [ArticlesComponent],
@@ -18,6 +21,9 @@ import { HistoryEffects } from '@core/state/history/history.effects';
     MatAutocompleteModule,
     StoreModule.forFeature('history', historyReducer),
     EffectsModule.forFeature([HistoryEffects]),
+    MatPaginatorModule,
+    PostComponent,
+    DefaultMaterialModule
   ]
 })
 export class ArticlesModule { }

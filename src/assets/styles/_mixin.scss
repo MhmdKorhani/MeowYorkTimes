@@ -1,0 +1,7 @@
+@mixin height_transition($time: .4s) {
+    -webkit-transition: max-height $time ease-out;
+    -moz-transition: max-height $time ease-out;
+    -ms-transition: max-height $time ease-out;
+    -o-transition: max-height $time ease-out;
+    transition: max-height $time ease-out;
+}

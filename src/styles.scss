@@ -8,3 +8,10 @@
         width: 8rem;
     }
 }
+
+@media screen and (max-width: 700px) {
+    .fullscreen-dialog {
+        max-width: 95vw !important;
+        width: 95vw;
+    }
+}

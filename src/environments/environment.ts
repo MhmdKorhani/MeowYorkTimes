@@ -4,8 +4,9 @@ export const environment = {
         apiKey: 'x1K6qGk31Svxejq0qkkkwlMjdpTHjQIE',
         ApiURL: 'https://api.nytimes.com/svc'
     },
-    dummyJSON: {
+    dummyData: {
         avatar: 'https://ui-avatars.com/api',
-        ApiURL: 'https://dummyjson.com'
+        dummyJson: 'https://dummyjson.com',
+        lorempicsum: "https://picsum.photos"
     }
 };

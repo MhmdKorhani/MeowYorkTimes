@@ -12,8 +12,8 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 1. Clone the fake auth server: `git clone https://github.com/techiediaries/fake-api-jwt-json-server.git`.
 2. Navigate to auth server directory and run `npm install`.
 3. Run the auth server: `npm run start-auth`.
-4. Clone the angular project: `git clone https://github.com/MhmdKorhani/MeowYorkTimes.git`.
-5. Run `npm install` to install required npm packages.
+4. Clone the angular project into another directory: `git clone https://github.com/MhmdKorhani/MeowYorkTimes.git`.
+5. Navigate to angular project directory and run `npm install` to install required npm packages.
 6. Run `ng serve --open` to run the dev server and make angular cli open your default browser and navigate to `http://localhost:4200/`.
 
 ## 3rd Party Libraries
@@ -22,7 +22,6 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 
 1. [Bootstrap](https://getbootstrap.com) @5.3.0
 2. [Angular Material](https://material.angular.io) @16.1.5
-3. [Swiper](https://swiperjs.com/) @8.4.7
 
 **Date Formatting**
 
@@ -30,8 +29,9 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 
 ## 3rd Party APIs
 
-1. [DummyJSON](https://dummyjson.com) - Comments API. This was used because New York Time's Comments API is deprecated.
-2. [UI Avatars](https://ui-avatars.com) - Initials Avatar Generator
+1. [DummyJSON](https://dummyjson.com) - Comments API *This was used because New York Time's Comments API is deprecated.*
+2. [UI Avatars](https://ui-avatars.com) - Initials Avatar Generator API
+3. [Lorem Picsum](https://picsum.photos) - Random Pictures API
 
 ## ESlint
 
