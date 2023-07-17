@@ -44,6 +44,19 @@ export class PostDetailComponent implements OnInit {
     private api: ApiService) { }
 
   ngOnInit(): void {
+    this.constructPostDetail();
+    this.getComments();
+  }
+
+  /**
+   * Constructs the post detail based on the type of data.
+   * If the data type is "story", it extracts the necessary properties from the Story object
+   * and assigns them to the corresponding class properties.
+   * If the data type is "article", it extracts the necessary properties from the Article object
+   * and assigns them to the corresponding class properties.
+   * @returns None
+   */
+  private constructPostDetail() {
     if (this.data.type == "story") {
       const obj = this.data.value as Story;
       this.title = obj.title;
@@ -62,10 +75,14 @@ export class PostDetailComponent implements OnInit {
       this.facets = [obj.news_desk];
       this.multimedia = obj.multimedia?.length > 0 ? obj.multimedia[0].url : null;
     }
-    this.getComments();
   }
 
-  async getComments() {
+  /**
+   * Retrieves comments from the API and assigns them to the 'comments' property.
+   * @async
+   * @returns None
+   */
+  private async getComments() {
     const params = new Map<string, string>();
     params.set('limit', (Math.random() * (15 - 1) + 1).toFixed(0).toString());
     this.comments = (await firstValueFrom(this.api.get<CommentsResponse>(`${environment.dummyData.dummyJson}/${Endpoints.comments}`, params))).comments;

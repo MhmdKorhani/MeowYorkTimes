@@ -53,7 +53,6 @@ export class StoriesComponent {
     this.stories = results.results.filter(x => x.multimedia != null && x.multimedia[0].caption !== '' && x.title !== '');
   }
 
-
   /**
    * Opens a dialog to display the details of a story.
    * @param {number} index - The index of the story to display.

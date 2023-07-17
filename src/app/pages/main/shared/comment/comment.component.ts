@@ -18,6 +18,10 @@ export class CommentComponent implements OnInit {
   avatar!: string;
 
   ngOnInit(): void {
+    this.generateAvatar();
+  }
+
+  private generateAvatar() {
     this.avatar = `${environment.dummyData.avatar}/?name=${this.comment.user.username}&background=333&color=fff`;
   }
 }
