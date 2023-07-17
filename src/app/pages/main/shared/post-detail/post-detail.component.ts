@@ -66,7 +66,9 @@ export class PostDetailComponent implements OnInit {
   }
 
   async getComments() {
-    this.comments = (await firstValueFrom(this.api.get<CommentsResponse>(`${environment.dummyData.dummyJson}/${Endpoints.comments}`))).comments;
+    const params = new Map<string, string>();
+    params.set('limit', (Math.random() * (15 - 1) + 1).toFixed(0).toString());
+    this.comments = (await firstValueFrom(this.api.get<CommentsResponse>(`${environment.dummyData.dummyJson}/${Endpoints.comments}`, params))).comments;
     this.loading = false;
   }
 }

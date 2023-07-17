@@ -50,7 +50,7 @@ export class StoriesComponent {
     const url = `${environment.newYorkTimes.ApiURL}/${Endpoints.stories}/${category}.json`;
     const results = await firstValueFrom(this.api.get<StoryResponse>(url));
     this.loading = false;
-    this.stories = results.results.filter(x => x.multimedia != null && x.multimedia[0].caption !== '');
+    this.stories = results.results.filter(x => x.multimedia != null && x.multimedia[0].caption !== '' && x.title !== '');
   }
 
 

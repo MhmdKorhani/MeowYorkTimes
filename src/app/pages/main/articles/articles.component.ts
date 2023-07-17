@@ -97,7 +97,10 @@ export class ArticlesComponent implements OnInit {
 
   /**
    * Performs a search using the specified search string and page number.
+   * Sets dummy pictures for records with no multimedia
+   * Appeds image directory with new york times link to access images via url
    * @returns None
+   * @throws None
    */
   async search() {
     this.loading = true;
@@ -120,6 +123,11 @@ export class ArticlesComponent implements OnInit {
     this.loading = false;
   }
 
+  /**
+   * Opens a dialog to display the details of a post.
+   * @param {number} index - The index of the post in the response.
+   * @returns None
+   */
   async seeDetails(index: number) {
     this.dialog.open(PostDetailComponent, {
       data: { type: 'article', value: this.response.response.docs.at(index) },

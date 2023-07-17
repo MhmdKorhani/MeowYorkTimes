@@ -9,6 +9,11 @@
     }
 }
 
+.fullscreen-dialog {
+    max-width: 80vw !important;
+    width: 80vw;
+}
+
 @media screen and (max-width: 700px) {
     .fullscreen-dialog {
         max-width: 95vw !important;
