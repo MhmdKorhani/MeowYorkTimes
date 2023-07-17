@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { DefaultMaterialModule } from '@core/modules/default-material.module';
 import { CommentComponent } from '../comment/comment.component';
