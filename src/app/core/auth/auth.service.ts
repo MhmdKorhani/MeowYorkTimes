@@ -15,6 +15,13 @@ export class AuthService {
 
   private authUrl = environment.authURL;
   private tokenRefreshSubscription!: Subscription;
+  private regenerationTriggered = false;
+
+  // P.S!!!
+  // These two properties do not exist in a live scenario
+  // They exist to implement regenerate token function which is the login function
+  private email!: string;
+  private password!: string;
 
   constructor(
     private api: ApiService,
@@ -28,8 +35,8 @@ export class AuthService {
   async register(user: User): Promise<string | null> {
     const token = await firstValueFrom(this.api.post<AccessToken>(`${this.authUrl}/${Endpoints.register}`, user));
     if (token) {
-      this.setLoggedInUser(token.access_token);
-      this.startTokenRefreshTimer();
+      this.setLoggedInUser(token.access_token as string);
+      this.setEmailandPassword(user);
     }
     return token?.access_token;
   }
@@ -42,8 +49,8 @@ export class AuthService {
   async signIn(user: User): Promise<string | null> {
     const token = await firstValueFrom(this.api.post<AccessToken>(`${this.authUrl}/${Endpoints.login}`, user));
     if (token) {
-      this.setLoggedInUser(token.access_token);
-      this.startTokenRefreshTimer();
+      this.setLoggedInUser(token.access_token as string);
+      this.setEmailandPassword(user);
     }
     return token?.access_token;
   }
@@ -59,28 +66,37 @@ export class AuthService {
   }
 
   /**
-   * Sets the logged-in user's access token and optionally saves it to the session storage.
-   * @param {string | null} token - The access token of the logged-in user.
+   * Sets the logged-in user's access token and saves it to the session storage.
+   * Triggers token regenartion every 15 minutes (Code to be uncommented).
+   * @param {string} token - The access token of the logged-in user.
    * @param {boolean} [saveSession=true] - Whether to save the token to the session storage.
    * @returns None
    */
-  private setLoggedInUser(token: string | null, saveSession = true) {
-    if (token) {
-      this.store.dispatch(setAccessToken({ token: token }));
-      if (saveSession) {
-        sessionStorage.setItem(StorageKey.token, token);
-      }
+  private setLoggedInUser(token: string, saveSession = true) {
+    this.store.dispatch(setAccessToken({ token: token }));
+    if (saveSession) {
+      sessionStorage.setItem(StorageKey.token, token);
     }
+
+    //Uncomment this feature to activate 15 minutes token regeneration
+    //if (!this.regenerationTriggered) {
+    //  this.startTokenRefreshTimer();
+    //  this.regenerationTriggered = true;
+    //}
   }
 
   /**
    * Starts a timer to refresh the token at a fixed interval of 900000 milliseconds (15 minutes).
    * @returns None
    */
-  private startTokenRefreshTimer() {
-    this.tokenRefreshSubscription = interval(900000).subscribe(() => {
-      // API Call auth/refresh_token
-      // this.setLoggedInUser(token.access_token);
+  private async startTokenRefreshTimer() {
+    this.tokenRefreshSubscription = interval(900000).subscribe(async () => {
+      await this.signIn({ email: this.email, password: this.password } as User);
     });
+  }
+
+  private setEmailandPassword(user: User) {
+    this.email = user.email;
+    this.password = user.password;
   }
 }

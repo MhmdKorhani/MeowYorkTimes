@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpParams } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -21,6 +21,9 @@ export class ApiInterceptor implements HttpInterceptor {
 
     // You can add Authorization Bearer Token here
     // NY Times API Responds with 0 Unkown Error
+    //const headers = new HttpHeaders();
+    //headers = headers.set('Authorization', 'Bearer token from state');
+    
     const newRequest = request.clone({ params: params });
     return next.handle(newRequest);
   }
