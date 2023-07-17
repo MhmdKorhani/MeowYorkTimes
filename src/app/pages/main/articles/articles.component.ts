@@ -90,7 +90,6 @@ export class ArticlesComponent implements OnInit {
    * @returns None
    */
   handlePageEvent(event: PageEvent) {
-    console.log(event.pageIndex);
     this.page = event.pageIndex;
     this.search();
   }
@@ -109,7 +108,7 @@ export class ArticlesComponent implements OnInit {
 
     data.response.docs.forEach(doc => {
       if (doc.multimedia.length == 0) {
-        doc.multimedia = [{ url: `${environment.dummyData.lorempicsum}/seed/${this.searchString}/200/300` } as Multimedia];
+        doc.multimedia = [{ url: environment.dummyData.imagecdn } as Multimedia];
       }
       else {
         doc.multimedia.map(x => x.url = `https://nytimes.com/${x.url}`);

@@ -31,7 +31,7 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 
 1. [DummyJSON](https://dummyjson.com) - Comments API *This was used because New York Time's Comments API is deprecated.*
 2. [UI Avatars](https://ui-avatars.com) - Initials Avatar Generator API
-3. [Lorem Picsum](https://picsum.photos) - Random Pictures API
+3. [Image CDN](https://random.imagecdn.app) - Random Pictures API
 
 ## ESlint
 

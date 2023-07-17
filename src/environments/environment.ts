@@ -7,6 +7,6 @@ export const environment = {
     dummyData: {
         avatar: 'https://ui-avatars.com/api',
         dummyJson: 'https://dummyjson.com',
-        lorempicsum: "https://picsum.photos"
+        imagecdn: "https://random.imagecdn.app/200/300"
     }
 };

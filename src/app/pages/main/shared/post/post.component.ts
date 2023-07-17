@@ -1,6 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +10,7 @@ import { environment } from 'src/environments/environment';
     NgStyle
   ]
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
 
   @Input() title!: string;
   @Input() img?: string;
@@ -20,11 +19,5 @@ export class PostComponent implements OnInit {
 
   seeDetails() {
     this.postClicked.emit(this.index);
-  }
-
-  ngOnInit(): void {
-    if (!this.img) {
-      this.img = environment.dummyData.lorempicsum;
-    }
   }
 }
