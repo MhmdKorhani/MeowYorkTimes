@@ -16,8 +16,8 @@ export function AuthGuard(): CanActivateFn {
                     observer.next(true);
                 }
                 else {
-                    router.navigateByUrl('signin');
                     observer.next(false);
+                    router.navigateByUrl('signin');
                 }
             });
         });
