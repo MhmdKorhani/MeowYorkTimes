@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../providers/api.service';
 import { environment } from 'src/environments/environment';
-import { firstValueFrom } from 'rxjs';
+import { Subscription, firstValueFrom, interval } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { setAccessToken } from '@core/state/token';
 import { AccessToken } from '@shared/models/response';
@@ -14,6 +14,7 @@ import { Endpoints, StorageKey } from '@shared/enums';
 export class AuthService {
 
   private authUrl = environment.authURL;
+  private tokenRefreshSubscription!: Subscription;
 
   constructor(
     private api: ApiService,
@@ -28,6 +29,7 @@ export class AuthService {
     const token = await firstValueFrom(this.api.post<AccessToken>(`${this.authUrl}/${Endpoints.register}`, user));
     if (token) {
       this.setLoggedInUser(token.access_token);
+      this.startTokenRefreshTimer();
     }
     return token?.access_token;
   }
@@ -41,6 +43,7 @@ export class AuthService {
     const token = await firstValueFrom(this.api.post<AccessToken>(`${this.authUrl}/${Endpoints.login}`, user));
     if (token) {
       this.setLoggedInUser(token.access_token);
+      this.startTokenRefreshTimer();
     }
     return token?.access_token;
   }
@@ -52,6 +55,7 @@ export class AuthService {
   signOut() {
     sessionStorage.removeItem(StorageKey.token);
     this.store.dispatch(setAccessToken({ token: null }));
+    this.tokenRefreshSubscription.unsubscribe();
   }
 
   /**
@@ -67,5 +71,16 @@ export class AuthService {
         sessionStorage.setItem(StorageKey.token, token);
       }
     }
+  }
+
+  /**
+   * Starts a timer to refresh the token at a fixed interval of 900000 milliseconds (15 minutes).
+   * @returns None
+   */
+  private startTokenRefreshTimer() {
+    this.tokenRefreshSubscription = interval(900000).subscribe(() => {
+      // API Call auth/refresh_token
+      // this.setLoggedInUser(token.access_token);
+    });
   }
 }
