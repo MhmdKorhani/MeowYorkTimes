@@ -47,8 +47,9 @@ Run `ng test --code-coverage` to execute the unit tests via [Karma](https://karm
 2. Sign In Component
 3. Sign Up Component
 4. Landing Component
-5. Auth Service
-6. API Service
-7. Common Service
-8. Date Service
-9. API Interceptor
+5. Stories Component
+6. Auth Service
+7. API Service
+8. Common Service
+9. Date Service
+10. API Interceptor
