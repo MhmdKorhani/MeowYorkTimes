@@ -11,10 +11,11 @@ This project was developed with [Angular CLI](https://github.com/angular/angular
 
 1. Clone the fake auth server: `git clone https://github.com/techiediaries/fake-api-jwt-json-server.git`.
 2. Navigate to auth server directory and run `npm install`.
-3. Run the auth server: `npm run start-auth`.
-4. Clone the angular project into another directory: `git clone https://github.com/MhmdKorhani/MeowYorkTimes.git`.
-5. Navigate to angular project directory and run `npm install` to install required npm packages.
-6. Run `ng serve --open` to run the dev server and make angular cli open your default browser and navigate to `http://localhost:4200/`.
+3. Run `npm audit fix` to fix node dependencies.
+4. Run the auth server: `npm run start-auth`.
+5. Clone the angular project into another directory: `git clone https://github.com/MhmdKorhani/MeowYorkTimes.git`.
+6. Navigate to angular project directory and run `npm install` to install required npm packages.
+7. Run `ng serve --open` to run the dev server and make angular cli open your default browser and navigate to `http://localhost:4200/`.
 
 ## 3rd Party Libraries
 
